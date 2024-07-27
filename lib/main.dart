@@ -13,7 +13,14 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  TextEditingController nameController = TextEditingController();
+
   List<String> names = [
     "Daniel",
     "Elvis",
@@ -38,11 +45,18 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             TextField(
+              controller: nameController,
               decoration: InputDecoration(
                 hintText: "Ingrese nombre completo",
                 label: Text("Alumno:"),
                 icon: Icon(Icons.people),
               ),
+              onChanged: (String value){
+                // print(value);
+              },
+              onSubmitted: (String value){
+                // print(value);
+              },
             ),
             SizedBox(
               height: 20.0,
@@ -50,7 +64,13 @@ class HomePage extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  String name = nameController.text;
+                  names.add(name);
+                  setState(() {
+                    
+                  });
+                },
                 child: Text(
                   "Agregar",
                 ),
@@ -73,6 +93,7 @@ class HomePage extends StatelessWidget {
                   return ListTile(
                     leading: CircleAvatar(
                       radius: 20,
+                      // backgroundColor: Colors.teal,
                       child: Text(names[pepe][0]),
                     ),
                     title: Text(names[pepe]),
