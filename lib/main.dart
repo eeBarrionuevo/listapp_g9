@@ -56,11 +56,28 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
+            
+            SizedBox(
+              height: 20.0,
+            ),
+            Text("Listado general de alumno"),
+            
+            SizedBox(
+              height: 12.0,
+            ),
+            
             Expanded(
               child: ListView.builder(
                 itemCount: names.length,
                 itemBuilder: (BuildContext context, int pepe) {
-                  return Text(names[pepe]);
+                  return ListTile(
+                    leading: CircleAvatar(
+                      radius: 20,
+                      child: Text(names[pepe][0]),
+                    ),
+                    title: Text(names[pepe]),
+                    subtitle: Text("Nombre completo"),
+                  );
                 },
               ),
             ),
