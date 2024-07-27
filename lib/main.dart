@@ -31,6 +31,8 @@ class _HomePageState extends State<HomePage> {
     "Juan",
   ];
 
+  List<Map<String, dynamic>> people = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,10 +116,31 @@ class _HomePageState extends State<HomePage> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  String name = nameController.text;
-                  names.add(name);
-                  nameController.clear();
-                  setState(() {});
+                  // String name = nameController.text;
+                  // names.add(name);
+                  // nameController.clear();
+                  // setState(() {});
+
+                  // Map<String, dynamic> person = {};
+
+                  // person["name"] = nameController.text;
+                  // person["lastName"] = lastNameController.text;
+                  // person["email"] = emailController.text;
+                  // person["phone"] = phoneController.text;
+
+                  Map<String, dynamic> person = {
+                    "name": nameController.text,
+                    "lastName": lastNameController.text,
+                    "email": emailController.text,
+                    "phone": phoneController.text,
+                  };
+
+                  people.add(person);
+
+                  setState(() {
+                    
+                  });
+
                 },
                 child: Text(
                   "Agregar",
@@ -133,7 +156,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: names.length,
+                itemCount: people.length,
                 itemBuilder: (BuildContext context, int pepe) {
                   return ListTile(
                     leading: CircleAvatar(
@@ -141,7 +164,7 @@ class _HomePageState extends State<HomePage> {
                       // backgroundColor: Colors.teal,
                       child: Text(names[pepe][0]),
                     ),
-                    title: Text(names[pepe]),
+                    title: Text("${people[pepe]["name"]} ${people[pepe]["lastName"]}"),
                     subtitle: Text("Nombre completo"),
                   );
                 },
