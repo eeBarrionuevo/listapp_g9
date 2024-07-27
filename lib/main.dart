@@ -101,9 +101,9 @@ class _HomePageState extends State<HomePage> {
               onChanged: (String value) {
                 // print(value);
               },
-              onSubmitted: (String value) {
-                // print(value);
-              },
+              // onSubmitted: (String value) {
+              //   // print(value);
+              // },
             ),
             SizedBox(
               height: 20.0,
@@ -176,7 +176,12 @@ class _HomePageState extends State<HomePage> {
                         Icons.delete,
                         color: Colors.redAccent,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        people.removeAt(pepe);
+                        setState(() {
+                          
+                        });
+                      },
                     ),
                   );
                 },
