@@ -105,10 +105,6 @@ class _HomePageState extends State<HomePage> {
                 // print(value);
               },
             ),
-
-
-
-
             SizedBox(
               height: 20.0,
             ),
@@ -137,10 +133,12 @@ class _HomePageState extends State<HomePage> {
 
                   people.add(person);
 
-                  setState(() {
-                    
-                  });
+                  nameController.clear();
+                  lastNameController.clear();
+                  emailController.clear();
+                  phoneController.clear();
 
+                  setState(() {});
                 },
                 child: Text(
                   "Agregar",
@@ -162,10 +160,24 @@ class _HomePageState extends State<HomePage> {
                     leading: CircleAvatar(
                       radius: 20,
                       // backgroundColor: Colors.teal,
-                      child: Text(names[pepe][0]),
+                      child: Text(people[pepe]["name"][0]),
                     ),
-                    title: Text("${people[pepe]["name"]} ${people[pepe]["lastName"]}"),
-                    subtitle: Text("Nombre completo"),
+                    title: Text(
+                        "${people[pepe]["name"]} ${people[pepe]["lastName"]}"),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(people[pepe]["email"]),
+                        Text(people[pepe]["phone"])
+                      ],
+                    ),
+                    trailing: IconButton(
+                      icon: Icon(
+                        Icons.delete,
+                        color: Colors.redAccent,
+                      ),
+                      onPressed: () {},
+                    ),
                   );
                 },
               ),
